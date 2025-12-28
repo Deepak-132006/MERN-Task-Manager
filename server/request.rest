@@ -16,3 +16,21 @@ Content-Type: application/json
     "email":"deepak@gmail.com",
     "password":"123456"
 }
+
+###
+
+POST http://localhost:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2NjkxMjE0NywiZXhwIjoxNzY3MDg0OTQ3fQ.TLYJOisgcqpvUsiKJ0mtR7v4q_BPARo_dGFjOCy2rqQ
+Content-Type: application/json
+
+{
+    "title": "Learn Task",
+    "description": "Create & Test Tasks",
+    "dueDate": "2025-06-01"
+}
+
+###
+
+GET http://localhost:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2NjkxMjE0NywiZXhwIjoxNzY3MDg0OTQ3fQ.TLYJOisgcqpvUsiKJ0mtR7v4q_BPARo_dGFjOCy2rqQ
+Content-Type: application/json

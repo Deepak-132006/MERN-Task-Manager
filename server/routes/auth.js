@@ -7,6 +7,9 @@ const router = express.Router();
 
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
+   if (!name || !email || !password) {
+    return res.status(400).json({ message: "All fields required" });
+  }
 
   try {
     const existingUser = await User.findOne({ email });
@@ -46,7 +49,7 @@ router.post("/login", async (req, res) => {
 
     res.json({
       user: { id: user._id, name: user.name, email: user.email },
-      token,
+      token
     });
   } catch (error) {
     res.status(500).json({ message: "Server Error", error: error.message });
