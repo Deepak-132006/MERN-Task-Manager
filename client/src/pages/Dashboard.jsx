@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api from "../api/axios.js";
 import { toast } from "react-toastify";
+import TaskCard from "../components/TaskCard.jsx";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState("");
   const [loading, setLoading] = useState(false);
+  const [filter, setFilter] = useState("all");
+  const [showForm, setShowForm] = useState(false);
+  const [editTask, setEditTask] = useState(null)
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -59,17 +63,40 @@ const Dashboard = () => {
   const handleToggle = async (id) => {
     try {
       const res = await api.patch(`/tasks/${id}/toggle`);
-      setTasks((prev) => 
-        prev.map((t) => (t._id === id ? res.data : t))
-      );
-    } catch (error){
-        toast.error(error.response?.data?.message || "Failed to Update the Task")
+      setTasks((prev) => prev.map((t) => (t._id === id ? res.data : t)));
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to Update the Task");
     }
   };
 
+  if (loading) return <Loader />;
+
   return (
     <div>
-        
+      <div>
+        {tasks.map((task) => (
+          <TaskCard
+            key={task._id}
+            task={task}
+            onEdit={() => {
+              setEditTask(task);
+              setShowForm(true);
+            }}
+            onDelete={() => handleDelete(task._id)}
+            onToggle={() => handleToggle(task._id)}
+          />
+        ))}
+      </div>
+      {showForm && (
+        <TaskForm
+          task={editTask}
+          onClose={() => {
+            setShowForm(false);
+            setEditTask(null);
+          }}
+          onSubmit={editTask ? handleUpdate : handleAdd}
+        />
+      )}
     </div>
   );
 };
