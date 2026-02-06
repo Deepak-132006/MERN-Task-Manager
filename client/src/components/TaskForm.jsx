@@ -14,10 +14,12 @@ const TaskForm = ({task, onSubmit, onClose}) => {
   useEffect(() => {
     if(isEdit){
       setForm({
-        
+        title: task.title || "",
+        description: task.description || "",
+        dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
       })
     }
-  })
+  }, [isEdit, task])
 
   return (
     <div>
