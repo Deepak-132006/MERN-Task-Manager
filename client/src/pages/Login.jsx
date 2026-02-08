@@ -10,6 +10,10 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const handleSignup = (e) => {
+    navigate("/signup")
+  }
+
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -32,6 +36,7 @@ const Login = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -51,6 +56,9 @@ const Login = () => {
         /> <br />
         <button type="submit">Login</button>
       </form>
+      <div>
+        <p>Don't have an account?<button onClick={handleSignup}>Signup</button></p>
+      </div>
     </div>
   );
 };
