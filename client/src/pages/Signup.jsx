@@ -50,7 +50,7 @@ const Signup = () => {
       >
         <div className="absolute inset-0 flex flex-col justify-center items-center gap-6 p-8">
           <div className="w-1/2">
-            <img src={Logo} alt="" />
+            <img src={Logo} alt="Taskit" />
           </div>
           <h5 className=" font-semibold text-[#2C666E] mb-2">Create Account</h5>
 
