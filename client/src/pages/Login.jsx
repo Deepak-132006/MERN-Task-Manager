@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import PixelCard from "../components/PixelCard";
 import Logo from "../assets/Taskit-Logo-2-NoBG.png";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
     password: "",
   });
 
+  const {login} = useAuth();
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
@@ -26,7 +28,8 @@ const Login = () => {
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
       }
-
+      
+      login();
       navigate("/dashboard");
     } catch (error) {
       console.error(error.response?.data || response.message);
