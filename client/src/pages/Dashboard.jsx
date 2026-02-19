@@ -11,6 +11,7 @@ const Dashboard = () => {
         key={task._id}
         task={task}
         onEdit={() => {
+          
           setEditTask(task);
           setShowForm(true);
         }}
