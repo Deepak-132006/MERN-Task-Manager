@@ -13,3 +13,5 @@ function FilterBar({ filter, setFilter, onAdd }) {
     </div>
   );
 }
+
+export default FilterBar;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import TaskForm from "../components/TaskForm";
 import TaskCard from "../components/TaskCard";
+import FilterBar from "../components/FilterBar";
 import api from "../api/axios";
 
 const Dashboard = () => {
@@ -61,22 +62,43 @@ const Dashboard = () => {
       console.error("Toggle Error: ", error);
     }
   };
-  
 
   return (
     <div>
       <NavBar />
-      <TaskCard
-        key={task._id}
-        task={task}
-        onEdit={() => {
-          setEditTask(task);
-          setShowForm(true);
-        }}
-        onDelete={() => handleDelete(task._id)}
-        onToggle={() => handleToggle(task._id)}
+      <FilterBar
+        filter={filter}
+        setFilter={setFilter}
+        onAdd={() => setShowForm(true)}
       />
-      <TaskForm />
+      <div>
+        {tasks.length === 0 ? (
+          <p>No Tasks yet.</p>
+        ) : (
+          tasks.map((task) => (
+            <TaskCard
+              key={task._id}
+              task={task}
+              onEdit={() => {
+                setEditTask(task);
+                setShowForm(true);
+              }}
+              onDelete={() => handleDelete(task._id)}
+              onToggle={() => handleToggle(task._id)}
+            />
+          ))
+        )}
+      </div>
+      {showForm && (
+        <TaskForm
+          task={editTask}
+          onClose={() => {
+            setShowForm(false);
+            setEditTask(null);
+          }}
+          onSubmit={editTask ? handleUpdate : handleAdd}
+        />
+      )}
     </div>
   );
 };
