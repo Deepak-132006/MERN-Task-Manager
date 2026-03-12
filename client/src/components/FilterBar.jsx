@@ -4,9 +4,9 @@ function FilterBar({ filter, setFilter, onAdd }) {
     <div>
       <div>
         {filters.map((f) => {
-          <button key={f} onClick={() => setFilter(f)}>
+          return (<button key={f} onClick={() => setFilter(f)}>
             {f}
-          </button>;
+          </button>);
         })}
       </div>
       <button onClick={onAdd}>Add Task</button>

@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+.task-des{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
+.task-des .expand{
+    -webkit-line-clamp: unset;
+}
 /* background: #2D676E;
 background: linear-gradient(40deg, rgba(45, 103, 110, 1) 0%, rgba(239, 237, 238, 1) 100%); */

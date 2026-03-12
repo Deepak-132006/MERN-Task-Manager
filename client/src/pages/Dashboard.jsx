@@ -4,6 +4,7 @@ import TaskForm from "../components/TaskForm";
 import TaskCard from "../components/TaskCard";
 import FilterBar from "../components/FilterBar";
 import api from "../api/axios";
+import Loader from "../components/Loader";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -27,16 +28,16 @@ const Dashboard = () => {
     fetchTasks();
   }, [filter]);
 
-  const handleAdd = async () => {
+  const handleAdd = async (data) => {
     try {
-      const res = await api.get("/tasks", data);
+      const res = await api.post("/tasks", data);
       setTasks((prev) => [res.data, ...prev]);
     } catch (err) {
       console.error("Add Error: ", err);
     }
   };
 
-  const handleUpdate = async (id) => {
+  const handleUpdate = async (id, data) => {
     try {
       const res = await api.put(`/tasks/${id}`, data);
       setTasks((prev) => prev.map((t) => (t._id === id ? res.data : t)));
@@ -62,6 +63,12 @@ const Dashboard = () => {
       console.error("Toggle Error: ", error);
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
+
+
 
   return (
     <div>
