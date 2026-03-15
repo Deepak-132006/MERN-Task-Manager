@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           }
         />
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000} theme="colored" />
     </div>
   );
 };

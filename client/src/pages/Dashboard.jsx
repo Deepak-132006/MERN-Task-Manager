@@ -5,6 +5,7 @@ import TaskCard from "../components/TaskCard";
 import FilterBar from "../components/FilterBar";
 import api from "../api/axios";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -12,6 +13,7 @@ const Dashboard = () => {
   const [filter, setFilter] = useState("all");
   const [showForm, setShowForm] = useState(false);
   const [editTask, setEditTask] = useState(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -32,8 +34,11 @@ const Dashboard = () => {
     try {
       const res = await api.post("/tasks", data);
       setTasks((prev) => [res.data, ...prev]);
+      toast.success("Task added successfully!");
     } catch (err) {
       console.error("Add Error: ", err);
+      toast.error("Task added failed!");
+
     }
   };
 
@@ -41,6 +46,7 @@ const Dashboard = () => {
     try {
       const res = await api.put(`/tasks/${id}`, data);
       setTasks((prev) => prev.map((t) => (t._id === id ? res.data : t)));
+      toast.info("Updated Successfully!");
     } catch (err) {
       console.error("Update Error", err);
     }
@@ -50,9 +56,15 @@ const Dashboard = () => {
     try {
       await api.delete(`/tasks/${id}`);
       setTasks((prev) => prev.filter((t) => t._id !== id));
+      toast.error("Deleted Successfully")
     } catch (error) {
       console.error("Delete Error: ", error);
+      toast.error("Unable to Delete")
     }
+    setDeleting(true);
+    setTimeout(() => {
+      onDelete();
+    }, 500);
   };
 
   const handleToggle = async (id) => {
@@ -68,8 +80,6 @@ const Dashboard = () => {
     return <Loader />;
   }
 
-
-
   return (
     <div>
       <NavBar />
@@ -78,7 +88,7 @@ const Dashboard = () => {
         setFilter={setFilter}
         onAdd={() => setShowForm(true)}
       />
-      <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-8">
         {tasks.length === 0 ? (
           <p>No Tasks yet.</p>
         ) : (
@@ -97,14 +107,16 @@ const Dashboard = () => {
         )}
       </div>
       {showForm && (
-        <TaskForm
-          task={editTask}
-          onClose={() => {
-            setShowForm(false);
-            setEditTask(null);
-          }}
-          onSubmit={editTask ? handleUpdate : handleAdd}
-        />
+        <div>
+          <TaskForm
+            task={editTask}
+            onClose={() => {
+              setShowForm(false);
+              setEditTask(null);
+            }}
+            onSubmit={editTask ? handleUpdate : handleAdd}
+          />
+        </div>
       )}
     </div>
   );

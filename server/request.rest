@@ -2,59 +2,58 @@ POST http://localhost:5000/api/auth/signup
 Content-Type: application/json
 
 {
-    "name":"Deepak",
-    "email":"deepak@gmail.com",
-    "password":"123456"
+  "name": "Deepak",
+  "email": "deepak@gmail.com",
+  "password": "123456"
 }
 
-###
 
+###
 POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "email":"deepak@gmail.com",
-    "password":"123456"
+  "email": "deepak@gmail.com",
+  "password": "123456"
 }
 
-###
 
+###
 POST http://localhost:5000/api/tasks
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2ODA0NjIxNywiZXhwIjoxNzY4MjE5MDE3fQ.HmDlHbaP1glt4qUHi5QLdaG4rVM2mm_n0_XsS8HHxdY
 Content-Type: application/json
 
 {
-    "title": "Learn Task",
-    "description": "Create & Test Tasks",
-    "dueDate": "2025-06-01"
+  "title": "Learn Task",
+  "description": "Create & Test Tasks",
+  "dueDate": "2025-06-01"
 }
 
-###
 
+###
 GET http://localhost:5000/api/tasks
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2Njk3OTE1OSwiZXhwIjoxNzY3MTUxOTU5fQ.pj3bsueOMRePFfntrWX_MNU9LBL9zYCmVH1m6nCWEwE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODk2MWE4YWI4NDU1YTk0ODlmNzNkNiIsImlhdCI6MTc3MzU0NzQyOCwiZXhwIjoxNzczNzIwMjI4fQ.Vy575uH4m6A11p1tQgtFLg_ybjSHccahVxU-vwcZI9I
 Content-Type: application/json
 
 
 ###
-
 PUT http://localhost:5000/api/tasks/6951272285f405e1c1a442cb
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2Njk3OTE1OSwiZXhwIjoxNzY3MTUxOTU5fQ.pj3bsueOMRePFfntrWX_MNU9LBL9zYCmVH1m6nCWEwE
 Content-Type: application/json
 
 {
-    "title":"Learn",
-    "status": "completed"
+  "title": "Learn",
+  "status": "completed"
 }
 
-###
 
-DELETE http://localhost:5000/api/tasks/6950ed930dc32299b1d3df78
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2Njk3OTE1OSwiZXhwIjoxNzY3MTUxOTU5fQ.pj3bsueOMRePFfntrWX_MNU9LBL9zYCmVH1m6nCWEwE
+###
+DELETE http://localhost:5000/api/tasks/69b6312a392efbaf061c5a6c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ODk2MWE4YWI4NDU1YTk0ODlmNzNkNiIsImlhdCI6MTc3MzU0NzQyOCwiZXhwIjoxNzczNzIwMjI4fQ.Vy575uH4m6A11p1tQgtFLg_ybjSHccahVxU-vwcZI9I
 Content-Type: application/json
 
-###
 
+###
 PATCH http://localhost:5000/api/tasks/6951272285f405e1c1a442cb/toggle
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NTBkZmFlZWRlMTBhNjNmYjVkODRjOSIsImlhdCI6MTc2Njk3OTE1OSwiZXhwIjoxNzY3MTUxOTU5fQ.pj3bsueOMRePFfntrWX_MNU9LBL9zYCmVH1m6nCWEwE
 

@@ -4,6 +4,7 @@ import api from "../api/axios";
 import PixelCard from "../components/PixelCard";
 import Logo from "../assets/Taskit-Logo-2-NoBG.png";
 import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -23,12 +24,11 @@ const Login = () => {
       e.preventDefault();
       const response = await api.post("/auth/login", form);
       console.log("Login Success!!", response.data);
-      alert("Login Success!!");
+      toast.success("Logged in Successfully")
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
       }
-      
       login();
       navigate("/dashboard");
     } catch (error) {

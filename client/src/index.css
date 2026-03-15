@@ -1,14 +1,28 @@
 @import 'tailwindcss';
 
-.task-des{
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+
+
+.active{
+    background: white;
+    color: #2C666E;
 }
 
-.task-des .expand{
-    -webkit-line-clamp: unset;
+@keyframes fallDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  30% {
+    transform: translateY(10px) rotate(-2deg);
+  }
+
+  60% {
+    transform: translateY(80px) rotate(6deg);
+  }
+
+  100% {
+    transform: translateY(200px) rotate(12deg);
+    opacity: 0;
+  }
 }
-/* background: #2D676E;
-background: linear-gradient(40deg, rgba(45, 103, 110, 1) 0%, rgba(239, 237, 238, 1) 100%); */
