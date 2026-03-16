@@ -38,7 +38,7 @@ const TaskForm = ({ task, onSubmit, onClose }) => {
           </div>
         </div>
 
-        <span className="border h-px text-[#aba9a9]"> </span>
+        <span className="border-b h-px text-[#aba9a9]"> </span>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
             <p>

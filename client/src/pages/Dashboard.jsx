@@ -34,7 +34,7 @@ const Dashboard = () => {
     try {
       const res = await api.post("/tasks", data);
       setTasks((prev) => [res.data, ...prev]);
-      toast.success("Task added successfully!");
+      toast("Task added successfully!");
     } catch (err) {
       console.error("Add Error: ", err);
       toast.error("Task added failed!");
@@ -46,7 +46,7 @@ const Dashboard = () => {
     try {
       const res = await api.put(`/tasks/${id}`, data);
       setTasks((prev) => prev.map((t) => (t._id === id ? res.data : t)));
-      toast.info("Updated Successfully!");
+      toast("Updated Successfully!");
     } catch (err) {
       console.error("Update Error", err);
     }
@@ -56,7 +56,7 @@ const Dashboard = () => {
     try {
       await api.delete(`/tasks/${id}`);
       setTasks((prev) => prev.filter((t) => t._id !== id));
-      toast.error("Deleted Successfully")
+      toast("Deleted Successfully")
     } catch (error) {
       console.error("Delete Error: ", error);
       toast.error("Unable to Delete")

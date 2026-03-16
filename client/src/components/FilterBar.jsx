@@ -14,7 +14,7 @@ function FilterBar({ filter, setFilter, onAdd }) {
           return (
             <button
               key={f.value}
-              className={`cursor-pointer px-3 py-1 duration-500 rounded hover:scale-105 transition capitalize ${filter === f.value ? "active" : "text-white"}`}
+              className={`cursor-pointer px-3 py-1 duration-500 hover:scale-105 transition capitalize ${filter === f.value ? "active" : "text-gray-400"}`}
               onClick={() => {
                 setFilter(f.value);
               }}
