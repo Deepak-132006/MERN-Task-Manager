@@ -2,10 +2,9 @@
 
 Taskit is a production-ready, full-stack task management web application built using the **MERN stack**. It provides a seamless experience for users to create, track, and manage their productivity with secure authentication and a responsive dashboard.
 
-
-
-[Image of a MERN Stack Architecture diagram]
-
+**Project Link**: [View Project]([https://github.com/your-username/taskit](https://mern-taskit.vercel.app/)
+## 📸 Screenshots
+![Full Page Screenshot](output/Full_Page.jpeg)
 
 ## 🎯 Project Overview
 The goal of Taskit was to build a real-world productivity tool while mastering the complexities of frontend-backend integration, state management, and cloud deployment.
@@ -92,5 +91,4 @@ Building Taskit involved overcoming several real-world development hurdles:
 ---
 
 ## 💼 Contact
-**Your Name** - [Your LinkedIn] - [Your Email]
-Project Link: [https://github.com/your-username/taskit](https://github.com/your-username/taskit)
+**Deepak N** - [www.linkedin.com/in/deepak-n-b416bb309] - [deepakn132006@gmail.com]
