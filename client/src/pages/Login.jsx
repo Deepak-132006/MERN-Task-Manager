@@ -33,7 +33,7 @@ const Login = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error(error.response?.data || response.message);
-      alert(error.response?.data || "Login failed");
+      toast.error("Invalid Credentials")
     }
   };
 

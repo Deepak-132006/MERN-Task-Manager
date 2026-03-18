@@ -38,7 +38,6 @@ const Dashboard = () => {
     } catch (err) {
       console.error("Add Error: ", err);
       toast.error("Task added failed!");
-
     }
   };
 
@@ -56,15 +55,12 @@ const Dashboard = () => {
     try {
       await api.delete(`/tasks/${id}`);
       setTasks((prev) => prev.filter((t) => t._id !== id));
-      toast("Deleted Successfully")
+      toast("Deleted Successfully");
     } catch (error) {
       console.error("Delete Error: ", error);
-      toast.error("Unable to Delete")
+      toast.error("Unable to Delete");
     }
     setDeleting(true);
-    setTimeout(() => {
-      onDelete();
-    }, 500);
   };
 
   const handleToggle = async (id) => {
@@ -88,8 +84,13 @@ const Dashboard = () => {
         setFilter={setFilter}
         onAdd={() => setShowForm(true)}
       />
+      {loading && (
+        <p className="text-gray-400 text-sm px-8">Updating tasks...</p>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-8">
-        {tasks.length === 0 ? (
+        {loading ? (
+          <Loader />
+        ) : tasks.length === 0 ? (
           <p>No Tasks yet.</p>
         ) : (
           tasks.map((task) => (

@@ -3,6 +3,7 @@ import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import PixelCard from "../components/PixelCard";
 import Logo from "../assets/Taskit-Logo-2-NoBG.png";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -31,11 +32,11 @@ const Signup = () => {
         localStorage.setItem("token", response.data.token);
       }
 
-      alert("Signup Success!!");
+      toast.success("Signed up success!")
       navigate("/login");
     } catch (error) {
       console.error(error.response?.data || error.message);
-      alert(error.response?.data?.message || "Signup Failed");
+      toast.error("Signup Failed!")
     }
   };
 
