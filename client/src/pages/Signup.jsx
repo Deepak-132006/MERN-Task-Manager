@@ -33,7 +33,7 @@ const Signup = () => {
       }
 
       toast.success("Signed up success!")
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       console.error(error.response?.data || error.message);
       toast.error("Signup Failed!")
