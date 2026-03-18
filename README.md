@@ -4,7 +4,8 @@ Taskit is a production-ready, full-stack task management web application built u
 
 **Project Link**: [View Project]([https://github.com/your-username/taskit](https://mern-taskit.vercel.app/)
 ## 📸 Screenshots
-![Full Page Screenshot](output/Full_Page.jpeg)
+![Login](output/login.png)
+![Dashboard](output/dashboard.png)
 
 ## 🎯 Project Overview
 The goal of Taskit was to build a real-world productivity tool while mastering the complexities of frontend-backend integration, state management, and cloud deployment.
