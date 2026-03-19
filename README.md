@@ -94,4 +94,4 @@ Building Taskit involved overcoming several real-world development hurdles:
 ---
 
 ## 💼 Contact
-**Deepak N** - [www.linkedin.com/in/deepak-n-b416bb309] - [deepakn132006@gmail.com]
+**Deepak N** - [LinkedIn](www.linkedin.com/in/deepak-n-b416bb309) - [Email] (deepakn132006@gmail.com)
