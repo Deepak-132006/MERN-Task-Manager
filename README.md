@@ -86,8 +86,8 @@ Building Taskit involved overcoming several real-world development hurdles:
 ## 🚀 Getting Started
 
 1.  **Clone the repo:** `git clone https://github.com/Deepak-132006/MERN-Task-Manager.git`
-2.  **Install Backend Dependencies:** `cd backend && npm install`
-3.  **Install Frontend Dependencies:** `cd frontend && npm install`
+2.  **Install Backend Dependencies:** `cd server && npm install`
+3.  **Install Frontend Dependencies:** `cd client && npm install`
 4.  **Set Environment Variables:** Create a `.env` file in the backend root with your `MONGO_URI` and `PORT`.
 5.  **Run the App:** `npm run dev` (using concurrently) or start them separately.
 
