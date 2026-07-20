@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://mern-taskit.onrender.com/api"
+    baseURL: "https://taskit-mern.onrender.com/"
 })
 
 api.interceptors.request.use((config) => {
