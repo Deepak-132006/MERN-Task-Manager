@@ -49,7 +49,9 @@ const handleSubmit = async (e) => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
+if (loading) {
+  return <Loader />;
+}
   return (
     <div className="min-h-screen grid place-items-center bg-gray-100">
       <PixelCard
