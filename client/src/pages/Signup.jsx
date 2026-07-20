@@ -3,10 +3,13 @@ import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import PixelCard from "../components/PixelCard";
 import Logo from "../assets/Taskit-Logo-2-NoBG.png";
+import Loader from "../components/Loader";
 import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -24,19 +27,25 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
+
     try {
       const response = await api.post("/auth/signup", form);
+
       console.log("Signup Success", response.data);
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
       }
 
-      toast.success("Signed up success!")
+      toast.success("Signed up successfully!");
       navigate("/dashboard");
     } catch (error) {
       console.error(error.response?.data || error.message);
-      toast.error("Signup Failed!")
+      toast.error("Signup Failed!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -53,7 +62,10 @@ const Signup = () => {
           <div className="w-1/2">
             <img src={Logo} alt="Taskit" />
           </div>
-          <h5 className=" font-semibold text-[#2C666E] mb-2">Create Account</h5>
+
+          <h5 className="font-semibold text-[#2C666E] mb-2">
+            Create Account
+          </h5>
 
           <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
             <input
@@ -62,8 +74,8 @@ const Signup = () => {
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full border border-gray-400 rounded-3xl p-2 pl-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2C666E]"
               placeholder="Enter your name"
+              className="w-full border border-gray-400 rounded-3xl p-2 pl-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2C666E]"
             />
 
             <input
@@ -72,8 +84,8 @@ const Signup = () => {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border border-gray-400 rounded-3xl p-2 pl-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2C666E]"
               placeholder="Enter your email"
+              className="w-full border border-gray-400 rounded-3xl p-2 pl-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2C666E]"
             />
 
             <input
@@ -82,15 +94,16 @@ const Signup = () => {
               value={form.password}
               onChange={handleChange}
               required
-              className="w-full border border-gray-400 rounded-3xl p-2 pl-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2C666E]"
               placeholder="Enter your password"
+              className="w-full border border-gray-400 rounded-3xl p-2 pl-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2C666E]"
             />
 
             <button
               type="submit"
-              className="bg-[#2C666E] hover:bg-[#235257] text-white rounded-3xl py-2 transition-colors duration-200"
+              disabled={loading}
+              className="bg-[#2C666E] hover:bg-[#235257] text-white rounded-3xl py-2 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex justify-center items-center"
             >
-              Signup
+              {loading ? <Loader /> : "Signup"}
             </button>
           </form>
 
