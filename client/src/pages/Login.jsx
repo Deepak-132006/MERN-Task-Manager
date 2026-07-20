@@ -5,8 +5,10 @@ import PixelCard from "../components/PixelCard";
 import Logo from "../assets/Taskit-Logo-2-NoBG.png";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Login = () => {
+  const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -19,23 +21,30 @@ const Login = () => {
     navigate("/signup");
   };
 
-  const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      const response = await api.post("/auth/login", form);
-      console.log("Login Success!!", response.data);
-      toast.success("Logged in Successfully")
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-      }
-      login();
-      navigate("/dashboard");
-    } catch (error) {
-      console.error(error.response?.data || response.message);
-      toast.error("Invalid Credentials")
+  setLoading(true);
+
+  try {
+    const response = await api.post("/auth/login", form);
+
+    console.log("Login Success!!", response.data);
+    toast.success("Logged in Successfully");
+
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
     }
-  };
+
+    login();
+    navigate("/dashboard");
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    toast.error("Invalid Credentials");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
