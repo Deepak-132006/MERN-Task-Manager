@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 
 const Login = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -28,8 +28,6 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await api.post("/auth/login", form);
-
-    console.log("Login Success!!", response.data);
     toast.success("Logged in Successfully");
 
     if (response.data.token) {
