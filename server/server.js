@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "https://mern-taskit.vercel.app/",
+    origin: "https://mern-taskit.vercel.app",
     credentials: true
 }
 ));
