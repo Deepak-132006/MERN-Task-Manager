@@ -27,7 +27,7 @@ const handleSubmit = async (e) => {
   setLoading(true);
 
   try {
-    const response = await api.post("/auth/login", form);
+    const response = await api.post("/login", form);
     toast.success("Logged in Successfully");
 
     if (response.data.token) {
